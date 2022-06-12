@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <canvas id="canvas" width="800" height="600" style="border: 1px solid #000000;"></canvas>
+    <p id="result"></p>
+
+    <script>
+        class Rectangle {
+            x
+            y
+            sideA
+            sideB
+
+            constructor(x, y, sideA, sideB) {
+                this.x = x
+                this.y = y
+                this.sideA = sideA
+                this.sideB = sideB
+            }
+
+            getArea() {
+                return this.sideA * this.sideB
+            }
+
+            getPerimeter() {
+                return (this.sideA + this.sideB) * 2
+            }
+
+            draw() {
+                let canvas = document.getElementById('canvas')
+                let ctx = canvas.getContext('2d')
+                ctx.fillRect(this.x, this.y, this.sideA, this.sideB)
+            }
+
+            toResult() {
+                return `Diện tích là: ${this.getArea()} - Chu vi là: ${this.getPerimeter()}`
+            }
+        }
+
+        let rectangle = new Rectangle(10, 10, 80, 40)
+        rectangle.getArea()
+        rectangle.getPerimeter()
+        rectangle.draw()
+        document.getElementById('result').innerHTML = rectangle.toResult()
+    </script>
+</body>
+
+</html>
